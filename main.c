@@ -9,7 +9,6 @@ const char *ARQUIVO_USUARIOS_BIN = "usuarios.bin";
 
 int main(void) {
   int op = menu();
-
   
   return 0;
 }
