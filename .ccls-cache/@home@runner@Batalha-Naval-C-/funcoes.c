@@ -137,3 +137,30 @@ void exibirTabuleiroBot(char tabuleiro[SIZE][SIZE]) {
         printf("\n");
     }
 }
+
+// Função para inserir navios do jogador
+void insereNaviosJogador(char tabuleiro[SIZE][SIZE], Navio *navios) {
+  int x, y;
+
+  for (int i = 0; i < NUM_NAVIOS; i++) {
+    printf("Navio %d: ", i + 1);
+    scanf("%d %d", &x, &y);
+
+    // Ajusta as coordenadas para o índice do array (subtrai 1)
+    navios[i].linha = x - 1;  
+    navios[i].coluna = y - 1; 
+
+    tabuleiro[navios[i].linha][navios[i].coluna] = 'N'; // 'N' indica a presença de um navio
+  }
+}
+
+// Função para gerar posições dos navios do bot
+void posicaoBot(Coordenada *naviosBot) {
+    srand(time(NULL)); // Inicializa a semente para a geração de números aleatórios
+
+    for (int i = 0; i < NUM_NAVIOS; i++) {
+        naviosBot[i].x = rand() % SIZE; // Gera coordenada X
+        naviosBot[i].y = rand() % SIZE; // Gera coordenada Y
+    }
+}
+
