@@ -11,10 +11,11 @@ typedef struct {
     char senha[50]; 
 } Usuario;
 
-const char *ARQUIVO_USUARIOS_TXT = "usuarios.txt"; 
-const char *ARQUIVO_USUARIOS_BIN = "usuarios.bin"; 
+extern const char *ARQUIVO_USUARIOS_TXT; 
+extern const char *ARQUIVO_USUARIOS_BIN;
 
 void cadastrar_usuario();
 int login_usuario();
+int menu();
 
 #endif
