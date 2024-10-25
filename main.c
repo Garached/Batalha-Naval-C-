@@ -4,11 +4,14 @@
 #include <time.h>
 #include "funcoes.h"
 
+const char *BRed = "\033[1;31m"; 
+const char *BGreen = "\033[1;32m";
+const char *reset = "\033[0m"; 
+
 const char *ARQUIVO_USUARIOS_TXT = "usuarios.txt"; 
 const char *ARQUIVO_USUARIOS_BIN = "usuarios.bin";
 
 int main(void) {
-  int main() {
     srand(time(NULL)); // Inicializa a semente para o gerador de números aleatórios
 
     int op = menu();
@@ -60,4 +63,3 @@ int main(void) {
         } 
         return 0; 
     }
-}

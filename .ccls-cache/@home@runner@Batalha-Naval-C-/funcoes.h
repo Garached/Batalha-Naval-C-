@@ -8,6 +8,11 @@
 #define SIZE 10
 #define NUM_NAVIOS 7
 
+extern const char *BRed;   // Cor vermelha em negrito
+extern const char *BGreen; // Cor verde em negrito
+extern const char *reset;  // Reset de cores (voltar ao padrão)
+
+
 typedef struct {
     char nome[50];  
     char senha[50]; 
