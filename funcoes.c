@@ -164,3 +164,42 @@ void posicaoBot(Coordenada *naviosBot) {
     }
 }
 
+// Função para realizar as jogadas do jogador
+int jogadas_jogador(char tabuleiroBot[SIZE][SIZE], int *naviosRestantes) {
+    int x, y;
+
+    for (int i = 0; i < 5; i++) { // Limite de 5 jogadas
+        printf("Digite as coordenadas do seu ataque (ex: x y): ");
+        scanf("%d %d", &x, &y);
+
+        x -= 1;
+        y -= 1;
+
+        // Verifica se a jogada está dentro do tabuleiro
+        if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) {
+            printf("Coordenadas fora do tabuleiro! Tente novamente.\n");
+            i--; // Permite repetir a jogada
+            continue;
+        }
+
+        // Verifica se a coordenada já foi atacada
+        if (tabuleiroBot[x][y] == 'X' || tabuleiroBot[x][y] == 'O') {
+            printf("Você já atacou essa posição. Escolha outra.\n");
+            i--; // Permite repetir a jogada
+            continue;
+        }
+
+        // Verifica se acertou um navio
+        if (tabuleiroBot[x][y] == 'N') {
+            printf("%sAcertou um navio!%s\n", BGreen, reset);
+            tabuleiroBot[x][y] = 'X'; // Marca como acerto
+            (*naviosRestantes)--;     // Diminui o número de navios restantes do bot
+        } else {
+            printf("%sÁgua!%s\n", BRed, reset);
+            tabuleiroBot[x][y] = 'O'; // Marca como erro
+        }
+    }
+
+    return 0; // Retorna 0 ao final das jogadas
+}
+

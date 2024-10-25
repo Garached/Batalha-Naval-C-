@@ -35,5 +35,6 @@ void exibirTabuleiroJogador(char tabuleiro[SIZE][SIZE]);
 void exibirTabuleiroBot(char tabuleiro[SIZE][SIZE]);
 void insereNaviosJogador(char tabuleiro[SIZE][SIZE], Navio *navios);
 void posicaoBot(Coordenada *naviosBot);
+int jogadas_jogador(char tabuleiroBot[SIZE][SIZE], int *naviosRestantes);
 
 #endif
