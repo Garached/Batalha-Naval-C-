@@ -78,3 +78,25 @@ int menu() {
     printf("Saindo...\n");
     return 0; 
 }
+
+// Menu pós-login
+int menu_pos_login() {
+    int opcao;
+
+    do {
+        printf("\nEscolha uma opção:\n");
+        printf("1 - Jogar\n");
+        printf("2 - Sair\n");
+        printf("Digite a opção escolhida: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            return 1; // Jogar
+        } else if (opcao == 2) {
+            printf("Saindo do jogo...\n");
+            return 0; // Sair
+        }
+    } while (opcao != 2);
+
+    return 0; 
+}

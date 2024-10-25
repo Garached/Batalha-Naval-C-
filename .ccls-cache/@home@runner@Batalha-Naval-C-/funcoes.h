@@ -17,5 +17,6 @@ extern const char *ARQUIVO_USUARIOS_BIN;
 void cadastrar_usuario();
 int login_usuario();
 int menu();
+int menu_pos_login();
 
 #endif
