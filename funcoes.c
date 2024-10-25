@@ -119,3 +119,21 @@ void exibirTabuleiroJogador(char tabuleiro[SIZE][SIZE]) {
     printf("\n");
   }
 }
+
+// Função para exibir o tabuleiro do bot
+void exibirTabuleiroBot(char tabuleiro[SIZE][SIZE]) {
+    printf("Tabuleiro do Bot:\n");
+    printf("   ");
+    for (int i = 1; i <= SIZE; i++) {
+        printf(" %d", i);
+    }
+    printf("\n");
+
+    for (int i = 0; i < SIZE; i++) {
+        printf("%2d ", i + 1);
+        for (int j = 0; j < SIZE; j++) {
+            printf(" %c", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
+}

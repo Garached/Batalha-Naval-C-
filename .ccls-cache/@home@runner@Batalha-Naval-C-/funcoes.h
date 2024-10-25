@@ -20,5 +20,6 @@ int login_usuario();
 int menu();
 int menu_pos_login();
 void exibirTabuleiroJogador(char tabuleiro[SIZE][SIZE]);
+void exibirTabuleiroBot(char tabuleiro[SIZE][SIZE]);
 
 #endif
