@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#define SIZE 10
 
 typedef struct {
     char nome[50];  
@@ -18,5 +19,7 @@ void cadastrar_usuario();
 int login_usuario();
 int menu();
 int menu_pos_login();
+void exibirTabuleiroJogador(char tabuleiro[SIZE][SIZE]);
+void exibirTabuleiroBot(char tabuleiro[SIZE][SIZE]);
 
 #endif
