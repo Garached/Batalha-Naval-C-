@@ -153,3 +153,13 @@ void insereNaviosJogador(char tabuleiro[SIZE][SIZE], Navio *navios) {
     tabuleiro[navios[i].linha][navios[i].coluna] = 'N'; // 'N' indica a presença de um navio
   }
 }
+
+// Função para gerar posições dos navios do bot
+void posicaoBot(Coordenada *naviosBot) {
+    srand(time(NULL)); // Inicializa a semente para a geração de números aleatórios
+
+    for (int i = 0; i < NUM_NAVIOS; i++) {
+        naviosBot[i].x = rand() % SIZE; // Gera coordenada X
+        naviosBot[i].y = rand() % SIZE; // Gera coordenada Y
+    }
+}
