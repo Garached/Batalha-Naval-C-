@@ -8,6 +8,11 @@
 #define SIZE 10
 #define NUM_NAVIOS 7
 
+extern const char *BRed;   // Cor vermelha em negrito
+extern const char *BGreen; // Cor verde em negrito
+extern const char *reset;  // Reset de cores (voltar ao padrão)
+
+
 typedef struct {
     char nome[50];  
     char senha[50]; 
@@ -35,5 +40,7 @@ void exibirTabuleiroJogador(char tabuleiro[SIZE][SIZE]);
 void exibirTabuleiroBot(char tabuleiro[SIZE][SIZE]);
 void insereNaviosJogador(char tabuleiro[SIZE][SIZE], Navio *navios);
 void posicaoBot(Coordenada *naviosBot);
+int jogadas_jogador(char tabuleiroBot[SIZE][SIZE], int *naviosRestantes);
+void jogada_bot(char tabuleiroJogador[SIZE][SIZE], int *naviosRestantes);
 
 #endif

@@ -164,3 +164,100 @@ void posicaoBot(Coordenada *naviosBot) {
     }
 }
 
+// Função para realizar as jogadas do jogador
+int jogadas_jogador(char tabuleiroBot[SIZE][SIZE], int *naviosRestantes) {
+    int x, y;
+
+    for (int i = 0; i < 5; i++) { // Limite de 5 jogadas
+        printf("Digite as coordenadas do seu ataque (ex: x y): ");
+        scanf("%d %d", &x, &y);
+
+        x -= 1;
+        y -= 1;
+
+        // Verifica se a jogada está dentro do tabuleiro
+        if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) {
+            printf("Coordenadas fora do tabuleiro! Tente novamente.\n");
+            i--; // Permite repetir a jogada
+            continue;
+        }
+
+        // Verifica se a coordenada já foi atacada
+        if (tabuleiroBot[x][y] == 'X' || tabuleiroBot[x][y] == 'O') {
+            printf("Você já atacou essa posição. Escolha outra.\n");
+            i--; // Permite repetir a jogada
+            continue;
+        }
+
+        // Verifica se acertou um navio
+        if (tabuleiroBot[x][y] == 'N') {
+            printf("%sAcertou um navio!%s\n", BGreen, reset);
+            tabuleiroBot[x][y] = 'X'; // Marca como acerto
+            (*naviosRestantes)--;     // Diminui o número de navios restantes do bot
+        } else {
+            printf("%sÁgua!%s\n", BRed, reset);
+            tabuleiroBot[x][y] = 'O'; // Marca como erro
+        }
+    }
+
+    return 0; // Retorna 0 ao final das jogadas
+}
+
+// Função para a jogada do bot
+void jogada_bot(char tabuleiroJogador[SIZE][SIZE], int *naviosRestantes) {
+    int x, y;
+    char resultado[SIZE][SIZE]; // Para armazenar os resultados dos ataques
+    char ataques[5][50]; // Armazenar as mensagens de ataque
+    int ataqueIndex = 0; // Índice para a mensagem de ataque
+
+    // Inicializa o tabuleiro de resultados
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            resultado[i][j] = '~'; // Espaços vazios
+        }
+    }
+
+    for (int i = 0; i < 5; i++) { // Limita a 5 jogadas
+        do {
+            x = rand() % SIZE;
+            y = rand() % SIZE;
+        } while (tabuleiroJogador[x][y] == 'X' || tabuleiroJogador[x][y] == 'O');
+
+        // Verifica se acertou um navio
+        if (tabuleiroJogador[x][y] == 'N') {
+            snprintf(ataques[ataqueIndex], sizeof(ataques[ataqueIndex]), "O bot acertou um navio na posição (%d, %d)!", x + 1, y + 1);
+            resultado[x][y] = 'X'; // Marca como acerto
+            (*naviosRestantes)--;  // Diminui o número de navios restantes do jogador
+        } else {
+            snprintf(ataques[ataqueIndex], sizeof(ataques[ataqueIndex]), "O bot atirou na água na posição (%d, %d).", x + 1, y + 1);
+            resultado[x][y] = 'O'; // Marca como erro
+        }
+        ataqueIndex++; // Avança o índice de ataque
+    }
+
+    // Exibe o tabuleiro do bot apenas uma vez após todas as jogadas
+    printf("\nTabuleiro do Bot:\n");
+    printf("   ");
+    for (int i = 1; i <= SIZE; i++) {
+        printf(" %d", i);
+    }
+    printf("\n");
+
+    for (int i = 0; i < SIZE; i++) {
+        printf("%2d ", i + 1);
+        for (int j = 0; j < SIZE; j++) {
+            if (tabuleiroJogador[i][j] == 'N') {
+                printf(" N"); // Mostra os navios no tabuleiro
+            } else {
+                printf(" %c", resultado[i][j]); // Mostra os resultados dos ataques
+            }
+        }
+        printf("\n");
+    }
+
+    // Exibe as mensagens de ataque após o tabuleiro
+    printf("\nResultados dos ataques do bot:\n");
+    for (int i = 0; i < ataqueIndex; i++) {
+        printf("%s\n", ataques[i]);
+    }
+}
