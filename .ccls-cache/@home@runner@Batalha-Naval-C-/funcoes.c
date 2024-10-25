@@ -53,3 +53,50 @@ int login_usuario() {
     printf("Nome ou senha inválidos!\n");
     return 0; 
 }
+
+// Menu principal
+int menu() {
+    int opcao;
+
+    do {
+        printf("Escolha uma opção:\n");
+        printf("1 - Cadastrar Usuário\n");
+        printf("2 - Fazer Login\n");
+        printf("3 - Sair\n");
+        printf("Digite a opção escolhida: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            cadastrar_usuario();
+        } else if (opcao == 2) {
+            if (login_usuario()) { 
+                return 1;     
+            }
+        }
+    } while (opcao != 3);
+
+    printf("Saindo...\n");
+    return 0; 
+}
+
+// Menu pós-login
+int menu_pos_login() {
+    int opcao;
+
+    do {
+        printf("\nEscolha uma opção:\n");
+        printf("1 - Jogar\n");
+        printf("2 - Sair\n");
+        printf("Digite a opção escolhida: ");
+        scanf("%d", &opcao);
+
+        if (opcao == 1) {
+            return 1; // Jogar
+        } else if (opcao == 2) {
+            printf("Saindo do jogo...\n");
+            return 0; // Sair
+        }
+    } while (opcao != 2);
+
+    return 0; 
+}

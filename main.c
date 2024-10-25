@@ -4,7 +4,12 @@
 #include <time.h>
 #include "funcoes.h"
 
+const char *ARQUIVO_USUARIOS_TXT = "usuarios.txt"; 
+const char *ARQUIVO_USUARIOS_BIN = "usuarios.bin";
+
 int main(void) {
-  printf("Hello World\n");
+  int op = menu();
+
+  
   return 0;
 }
