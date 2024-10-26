@@ -43,20 +43,26 @@ int main(void) {
                 printf("\n--- Agora é sua vez de atacar o Bot! ---\n");
                 // Loop para as jogadas do jogador
                     jogadas_jogador(tabuleiroBot, &numNaviosBot);
-                    exibirTabuleiroBot(tabuleiroBot); // Exibe o tabuleiro do bot após todas as jogadas do jogador
-                    // O bot joga agora
-                    jogada_bot(tabuleiroJogador, &numNaviosJogador);
-
+                
+                    // Exibe o tabuleiro do bot após todas as jogadas do jogador
+                    printf("\nEstado do tabuleiro do Bot após a jogada do jogador:\n");
+                    exibirTabuleiroBot(tabuleiroBot); 
+                
+                            
                     // Exibe o estado final do tabuleiro do jogador
                     printf("\nEstado do tabuleiro do jogador após a jogada do bot:\n");
-                    exibirTabuleiroJogador(tabuleiroJogador);
+                    // exibirTabuleiroJogador(tabuleiroJogador);
+                    jogada_bot(tabuleiroJogador, &numNaviosJogador);
+                
                     // Verifica o resultado do jogo
-                    if (numNaviosBot == 0) {
-                        printf("Parabéns! Você afundou todos os navios do bot e venceu o jogo!\n");
-                    } else if (numNaviosJogador == 0) {
-                        printf("O bot afundou todos os seus navios. Você perdeu!\n");
-                    } else {
-                        printf("O jogo terminou.\n");
+                    if (numNaviosBot < numNaviosJogador) {
+                        printf("Parabéns! Você venceu o jogo!\n");
+                    } 
+                    else if (numNaviosJogador < numNaviosBot) {
+                        printf("Você perdeu! O Bot derrubou mais navios que você!\n");
+                    } 
+                    else {
+                        printf("Empate! O jogo terminou.\n");
                     }
                     return 0; 
             } 
