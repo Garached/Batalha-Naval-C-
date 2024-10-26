@@ -1,5 +1,6 @@
 <h1 id="titulo">Batalha Naval🚢</h1>
 <img src="https://th.bing.com/th/id/OIG1.aQwhs3WqKWZI2HATSp_k?pid=ImgGn" height=250 width=450>
+<h6>Imagem criada por IA.</h6>
 
 
 <h2 id="topicos">Tópicos</h2>
