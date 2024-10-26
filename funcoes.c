@@ -236,7 +236,7 @@ void jogada_bot(char tabuleiroJogador[SIZE][SIZE], int *naviosRestantes) {
     }
 
     // Exibe o tabuleiro do bot apenas uma vez após todas as jogadas
-    printf("\nTabuleiro do Bot:\n");
+    printf("\nTabuleiro do Jogador:\n");
     printf("   ");
     for (int i = 1; i <= SIZE; i++) {
         printf(" %d", i);
